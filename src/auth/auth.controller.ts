@@ -20,6 +20,13 @@ import {
     signIn(@Body() signInDto: Record<string, any>) {
       return this.authService.signIn(signInDto.username, signInDto.password);
     }
+
+    // @Post('signup')
+    // signUp(@Body() userSignupDto: UserSignupDTO) {
+
+    // }
+
+
   
     @UseGuards(AuthGuard)
     @Get('profile')
