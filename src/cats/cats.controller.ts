@@ -1,7 +1,8 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { CreateCatDto } from './create-cat.dto';
 import { CatsService } from './cats.service';
 import { Cat } from './cat.schema';
+import { TestGuard } from 'src/auth/test.guard';
 
 @Controller('cats')
 export class CatsController {
@@ -14,6 +15,7 @@ export class CatsController {
     }
 
     @Post()
+    @UseGuards(TestGuard)
     addCat(@Body() createCatDto: CreateCatDto) {
         console.log(createCatDto);
         
