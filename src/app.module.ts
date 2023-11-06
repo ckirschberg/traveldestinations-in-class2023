@@ -6,9 +6,10 @@ import { CatsModule } from './cats/cats.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
+import { BusinessCardsModule } from './business-cards/business-cards.module';
 
 @Module({
-  imports: [MongooseModule.forRoot('mongodb://localhost/comwell'), CatsModule, AuthModule, UsersModule],
+  imports: [MongooseModule.forRoot('mongodb://localhost/comwell'), CatsModule, AuthModule, UsersModule, BusinessCardsModule],
   controllers: [AppController],
   providers: [AppService],
 })
