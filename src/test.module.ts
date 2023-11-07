@@ -9,7 +9,7 @@ import { UsersModule } from './users/users.module';
 import { BusinessCardsModule } from './business-cards/business-cards.module';
 
 @Module({
-  imports: [MongooseModule.forRoot('mongodb://localhost/comwell_test'), CatsModule, AuthModule, UsersModule, BusinessCardsModule],
+  imports: [MongooseModule.forRoot('mongodb://127.0.0.1:27017/comwell_test'), CatsModule, AuthModule, UsersModule, BusinessCardsModule],
   controllers: [AppController],
   providers: [AppService],
 })

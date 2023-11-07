@@ -84,7 +84,29 @@ describe('BusinessCardsController (e2e)', () => {
     });
 
     describe('/business-cards/:id (DELETE)', () => {
-        it('should...', async () => {
+        it('should delete a specific business card', async () => {
+            //Arrange
+            const getResponseBefore = await request(app.getHttpServer())
+                                .get('/business-cards')
+            const numberOfBusinessCardsBefore = getResponseBefore.body.length;
+
+            const bc1 = new CreateBusinessCardDto('Christian Kirschberg', 'kirs@cphbusiness.dk');
+            const bc2 = new CreateBusinessCardDto('Jorge', 'jorge@cphbusiness.dk');
+
+            const createdBc1 = await bcService.create(bc1);
+            const createdBc2 = await bcService.create(bc2);
+        
+            // ACT
+            const response = await request(app.getHttpServer())
+                                    .delete('/business-cards/' + createdBc1._id)
+                                    .expect(200);
+
+            const getResponse = await request(app.getHttpServer())
+                                .get('/business-cards')
+
+            expect(getResponse.body.length).toEqual(numberOfBusinessCardsBefore + 1);
+            expect(getResponse.body[getResponse.body.length-1]._id.toString()).toEqual(createdBc2._id.toString());
+
         });
     });
 
