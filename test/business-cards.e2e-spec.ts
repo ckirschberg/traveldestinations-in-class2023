@@ -4,9 +4,11 @@ import * as request from 'supertest';
 import { AppModule } from './../src/app.module';
 import { TestModule } from './../src/test.module';
 import { CreateBusinessCardDto } from './../src/business-cards/dto/create-business-card.dto';
+import { BusinessCardsService } from './../src/business-cards/business-cards.service';
 
 describe('BusinessCardsController (e2e)', () => {
   let app: INestApplication;
+  let bcService: BusinessCardsService;
 
   beforeEach(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
@@ -15,6 +17,8 @@ describe('BusinessCardsController (e2e)', () => {
 
     app = moduleFixture.createNestApplication();
     app.useGlobalPipes(new ValidationPipe());
+    bcService = moduleFixture.get(BusinessCardsService);
+
     await app.init();
   });
 
@@ -73,5 +77,19 @@ describe('BusinessCardsController (e2e)', () => {
         expect(errorResponse.message[0]).toEqual('email should not be empty');
         expect(errorResponse.error).toEqual('Bad Request');
     });
-});
+    });
+    describe('/business-cards (GET)', () => {
+        it('should return all business cards', async () => {
+        });
+    });
+
+    describe('/business-cards/:id (DELETE)', () => {
+        it('should...', async () => {
+        });
+    });
+
+    describe('/business-cards/:id (PUT)', () => {
+        it('should...', async () => {
+        });
+    });
 });
