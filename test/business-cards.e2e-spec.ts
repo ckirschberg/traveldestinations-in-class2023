@@ -20,10 +20,11 @@ describe('BusinessCardsController (e2e)', () => {
     bcService = moduleFixture.get(BusinessCardsService);
 
     await app.init();
+    await bcService.removeAll();
   });
 
   describe('/business-cards (POST)', () => {
-    it('should create a new valid business card', async () => {
+    it('... should create a new valid business card', async () => {
         // Arrange
         const bc = new CreateBusinessCardDto('Christian Kirschberg', 'kirs@cphbusiness.dk');
         
@@ -111,7 +112,23 @@ describe('BusinessCardsController (e2e)', () => {
     });
 
     describe('/business-cards/:id (PUT)', () => {
-        it('should...', async () => {
-        });
+        
+        // ARRANGE
+        // 1: Create a user obj
+        // 2: save it throught the service to db
+        // 3: Create a new user obj. with the same id but different firstname
+        
+        // ACT
+        // 4: PUT the new user obj. to the server from no. 3.
+
+        // ASSERT
+        // 5: Use findOne from service to get the user obj. with the id from no. 1.
+        // 6: expect the firstname to be the same as the firstname from no. 3.
+        
+        
+        
+        
+        // it('should...', async () => {
+        // });
     });
 });

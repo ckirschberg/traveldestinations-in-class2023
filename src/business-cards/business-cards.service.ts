@@ -30,4 +30,8 @@ export class BusinessCardsService {
   remove(id: string) {
     return this.bcModel.findByIdAndDelete(id).exec();
   }
+
+  async removeAll() {
+    return this.bcModel.deleteMany({}).exec();
+  }
 }
