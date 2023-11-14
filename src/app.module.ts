@@ -10,7 +10,7 @@ import { BusinessCardsModule } from './business-cards/business-cards.module';
 import { BusinessModule } from './business/business.module';
 
 @Module({
-  imports: [MongooseModule.forRoot('mongodb://127.0.0.1:27017/businesscards'), CatsModule, AuthModule, UsersModule, BusinessCardsModule, BusinessModule],
+  imports: [MongooseModule.forRoot('mongodb://127.0.0.1:27017/comwell'), CatsModule, AuthModule, UsersModule, BusinessCardsModule, BusinessModule],
   controllers: [AppController],
   providers: [AppService],
 })
