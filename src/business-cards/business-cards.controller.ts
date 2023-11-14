@@ -24,6 +24,8 @@ export class BusinessCardsController {
 
   @Put(':id')
   update(@Param('id') id: string, @Body() updateBusinessCardDto: UpdateBusinessCardDto) {
+    // console.log("id: ", id);
+    
     return this.businessCardsService.update(id, updateBusinessCardDto);
   }
 

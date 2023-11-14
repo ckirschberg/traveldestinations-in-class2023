@@ -112,9 +112,10 @@ describe('BusinessCardsController (e2e)', () => {
     });
 
     describe('/business-cards/:id (PUT)', () => {
+        it('should update a specific business card', async () => {
         
         // ARRANGE
-        // 1: Create a user obj
+        // 1: Create a bc obj
         // 2: save it throught the service to db
         // 3: Create a new user obj. with the same id but different firstname
         
@@ -125,8 +126,21 @@ describe('BusinessCardsController (e2e)', () => {
         // 5: Use findOne from service to get the user obj. with the id from no. 1.
         // 6: expect the firstname to be the same as the firstname from no. 3.
         
-        
-        
+        const bc1 = new CreateBusinessCardDto('Christian Kirschberg', 'kirs@cphbusiness.dk');
+        const createdBc1 = await bcService.create(bc1);
+        createdBc1.name = 'George';
+
+        // console.log(createdBc1);
+
+        const response = await request(app.getHttpServer())
+                        .put('/business-cards/' + createdBc1._id.toString())
+                        .send(createdBc1)
+                        .expect(200);
+
+        // console.log(response.body);
+            const findOneResponse = await bcService.findOne(createdBc1._id.toString());
+            expect(findOneResponse.name).toEqual(createdBc1.name);
+        });
         
         // it('should...', async () => {
         // });

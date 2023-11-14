@@ -4,6 +4,6 @@ import { IsNotEmpty } from 'class-validator';
 
 export class UpdateBusinessCardDto extends PartialType(CreateBusinessCardDto) {
 
-    @IsNotEmpty()
-    id: number;
+    // @IsNotEmpty()
+    _id: string;
 }
